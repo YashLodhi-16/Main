@@ -1,0 +1,98 @@
+<html lang="en">
+  <head>
+    <!-- all style sheets are here -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/Component_css/navbar.css" />
+    <link rel="stylesheet" href="/Component_css/utility.css" />
+  </head>
+  <body>
+    <div class="navbarContainer" id="navbarContainer">
+      <nav
+        class="navbar over-hidden flex align-center fixed-nav bg-white"
+        id="navbar"
+      >
+        <!-- brand related stuff -->
+        <div
+          class="logoBrandNameContainer flex bg-white"
+          id="logoBrandNameContainer"
+        >
+          <div class="logoContainer center-center mx-2" id="logoContainer">
+            <img
+              class="logo border1px border-circle"
+              id="logo"
+              src="/IMG/logo.jpg"
+              alt="logo"
+            />
+          </div>
+
+          <div
+            class="brandNameContainer center-center mx-2"
+            id="brandNameContainer"
+          >
+            <!-- if brand name can't fit properly in navbar so remove width-max class and adjust it font size.  -->
+            <span class="brandName width-max" id="brandName">One Style</span>
+          </div>
+
+          <div
+            class="hamburger center-center ml-auto pointer mr-2 none fontrem-2"
+            id="hamburger"
+          >
+            &Congruent;
+          </div>
+        </div>
+
+        <!-- navigation links -->
+        <div class="linksListContainer ml-2" id="linksListContainer">
+          <ul class="linksList center-center" id="linksList">
+            <li class="linksContainer" id="linksContainer">
+              <a class="links" id="links-home" href="#">Home</a>
+            </li>
+
+            <li class="linksContainer" id="linksContainer">
+              <a class="links" id="links-contact us" href="#">Contact Us</a>
+            </li>
+
+            <li class="linksContainer" id="linksContainer">
+              <a class="links" id="links-about" href="#">About</a>
+            </li>
+
+            <li class="linksContainer" id="linksContainer">
+              <a class="links" id="links-services" href="#">Services</a>
+            </li>
+
+            <li class="linksContainer" id="linksContainer">
+              <a class="links" id="links-posts" href="#">Posts</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- search section -->
+        <div class="searchContainer center-center ml-auto" id="searchContainer">
+          <div
+            class="searchBarContainer mr-3 center-center"
+            id="searchBarContainer"
+          >
+            <input
+              type="search"
+              name="searchBar"
+              class="searchBar b-radius border1px center outline-none p-4"
+              id="searchBar"
+              placeholder="Search"
+            />
+          </div>
+
+          <div class="searchBtnContainer ml-3" id="searchBtnContainer">
+            <button
+              class="searchBtn b-radius pointer outline-none bg-white color-orange"
+              id="searchBtn"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

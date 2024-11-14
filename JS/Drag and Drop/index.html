@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../../IMG/favicon.png" type="image/x-icon">
+    <title>Drag and Drop</title>
+    <style>
+        body {
+            background: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+            background-attachment: fixed;
+            user-select: none;
+            text-align: center;
+        }
+
+        .imgBox {
+            background-image: url('https://images.unsplash.com/photo-1565619624098-cf4168a7cd9d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60');
+            position: absolute;
+            top: inherit;
+            left: inherit;
+            height: 145px;
+            width: 145px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .whiteBox {
+            outline: black ridge;
+            height: 155px;
+            width: 155px;
+            margin: 10px;
+            background-color: white;
+            border: 2px transparent solid;
+            border-radius: 15px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hold { border: 1px solid aliceblue; }
+
+        .dashed {
+            background-image: linear-gradient(315deg, #7a7adb 0%, #170e13 74%);
+            border-style: dashed;
+        }
+
+        .hide { display: none; }
+
+        .block { display: block !important; }
+    </style>
+</head>
+
+<body>
+
+    <div class="whiteBox dashed">
+        <div id="imgBox" class="imgBox" draggable="true"></div>
+    </div>
+    <div class="whiteBox">
+    </div>
+    <div class="whiteBox">
+    </div>
+    <div class="whiteBox">
+    </div>
+
+</body>
+<script>
+    // grabing all elements.
+    const imgBox = document.getElementById('imgBox');
+    const whiteBoxes = document.getElementsByClassName('whiteBox');
+    const whiteBoxesLength = whiteBoxes.length;
+
+    // adding dragstart event. it will add an hold class to imgBox and when setTimeout fires it will all remove all classes and add hide class only.
+    imgBox.addEventListener('dragstart', (e) => {
+        e.target.className += ' hold';
+        setTimeout(() => { e.target.className = 'hide'; }, 0);
+    });
+
+    // adding dragend event. it will set class to imgBox and block.
+    imgBox.addEventListener('dragend', (e) => {
+        e.target.className = 'imgBox block';
+        // creating an array with whiteBoxes variable and added a forEach loop.
+        Array.from(whiteBoxes).forEach((es) => {
+            // whitesBoxes variable element referred as es. If es does contains imgBox then it will remove dashed class form it.
+            if (!es.contains(imgBox)) { es.classList.remove('dashed'); }
+            // else it add dashed class
+            else { es.classList.add('dashed'); };
+        });
+    });
+
+    // for of loop for iterating element of whiteBoxes.
+    for (whiteBox of whiteBoxes) {
+
+        // adding dragover event on whiteBox to prevent its defalut behaviour.
+        whiteBox.addEventListener('dragover', e => { e.preventDefault(); });
+
+        // adding dragenter event on whiteBox to add dashed class on it.
+        whiteBox.addEventListener('dragenter', e => { e.target.className += ' dashed'; });
+
+        // adding dragenter event on whiteBox to set class to whiteBox.
+        whiteBox.addEventListener('dragleave', e => { e.target.className = 'whiteBox' });
+
+        // adding dragenter event on whiteBox to append imgBox.
+        whiteBox.addEventListener('drop', e => { e.target.append(imgBox); });
+
+    };
+
+    // adding touchmove event to imgBox
+    imgBox.addEventListener('touchmove', (e) => {
+        // preventing default behaviour
+        e.preventDefault();
+
+         // adding hold class
+         imgBox.classList.add('hold');
+
+        // grabing touchlocation into a variable
+        let location = e.targetTouches[0];
+
+        // setting imgBox left and top using location variable with minus -70
+        imgBox.style.left = location.pageX - 70 + 'px';
+        imgBox.style.top = location.pageY - 70 + 'px';
+
+        // creating four empty arrays for collecting position of whiteBoxes top, left, bottom and right.
+        array = [];
+        array2 = [];
+        array3 = [];
+        array4 = [];
+
+        // creating an array with whiteBoxes and adding an forEach for iterating whiteBoxes element as e
+        Array.from(whiteBoxes).forEach((e) => {
+
+            // creating multiple variable for collecting top, left, bottom, right of imgBox and whiteBoxes element referred as e. using math.floor for some it will return a decimal value so floor function will help to remove decimal value's.
+            topBox = Math.floor(imgBox.getBoundingClientRect().top);
+            leftBox = Math.floor(imgBox.getBoundingClientRect().left);
+            bottomBox = Math.floor(imgBox.getBoundingClientRect().bottom);
+            rightBox = Math.floor(imgBox.getBoundingClientRect().right);
+            whiteBoxTop = Math.floor(e.getBoundingClientRect().top);
+            whiteBoxleft = Math.floor(e.getBoundingClientRect().left);
+            whiteBoxbottom = Math.floor(e.getBoundingClientRect().bottom);
+            whiteBoxright = Math.floor(e.getBoundingClientRect().right);
+
+            // pushing whiteBox top to array, left to array2, bottom to array3, right to array4
+            array.push(whiteBoxTop)
+            array2.push(whiteBoxleft)
+            array3.push(whiteBoxbottom)
+            array4.push(whiteBoxright)
+
+            // if imgBox TLBR meets requirements then it will set whiteBoxes element class to whiteBox and dashed. else it will remove whiteBox element dashed class.
+            if (topBox >= whiteBoxTop &&
+                leftBox >= whiteBoxleft &&
+                bottomBox <= whiteBoxbottom &&
+                rightBox <= whiteBoxright) 
+                { e.className = "whiteBox dashed"; }
+            else { e.classList.remove('dashed'); };
+
+            // creating an array 5 for collecting imgBox top, left, bottom, right.
+            array5 = [topBox, leftBox, bottomBox, rightBox];
+        });
+    });
+
+    // adding touchend event to imgBox
+    imgBox.addEventListener('touchend', (e) => {
+        // preventing default behaviour
+        e.preventDefault();
+
+        // removing hold class
+        imgBox.classList.remove('hold');
+
+        // for loop runs until whiteBoxes length
+        for (let i = 0; i < whiteBoxesLength; i++) {
+
+            // grabing whiteBoxes element using i and set to a variable(element)
+            let element = whiteBoxes[i];
+
+            // array 5 meets requirements then appending imgBox to element (whiteBoxes element using i) and set element class to whiteBox and dashed. else the checking function will handle everything.
+            if (array5[0] >= array[i] &&
+                array5[1] >= array2[i] &&
+                array5[2] <= array3[i] &&
+                array5[3] <= array4[i]) {
+                element.append(imgBox);
+                element.className = "whiteBox dashed";
+            };
+        };
+        checking();
+    });
+
+    // function for checking that imgBox was inside in any of whiteBoxes.
+    function checking() {
+        // for loop for iterating array 5 (imgBox [top, left, bottom, right]) using i until i less than whiteBoxes length.
+        for (i = 0; i < whiteBoxesLength; i++) {
+            // if array 5 meets the parameter with array's {whiteBoxs (array[top], array2[left], array3[bottom], array4[right])} then nothing will happen. else it will call setPosition function.
+            if (array5[0] >= array[i]) {
+                if (array5[1] >= array2[i]) {
+                    if (array5[2] <= array3[i]) {
+                        if (array5[3] <= array4[i]) { }
+                        else { setPostition(); };
+                    } else { setPostition(); };
+                } else { setPostition(); };
+            } else { setPostition(); };
+        };
+    };
+
+    // function for resetting imgBox position
+    function setPostition() {
+        // added dashed class on imgBox
+        imgBox.parentElement.classList.add('dashed');
+
+        // creating two variable for grabing imgBox parentElement top and left position .
+        let top = Math.floor(imgBox.parentElement.getBoundingClientRect().top) + 7 + "px";
+        let left = Math.floor(imgBox.parentElement.getBoundingClientRect().left) + 9 + "px";
+
+        // setting imgBox top and left using top and left variables.
+        imgBox.style.top = top;
+        imgBox.style.left = left;
+    };
+</script>
+
+</html>

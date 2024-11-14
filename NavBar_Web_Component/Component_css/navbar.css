@@ -1,0 +1,103 @@
+:host{ --toggle-width: -moz-available; }
+
+.navbar{ box-shadow: 0px 3px 15px darkgray; }
+
+.logoBrandNameContainer{ padding: 1% 0px; }
+
+.logo{ width: 35px; }
+
+.linksListContainer{ width: var(--toggle-width); }
+
+.linksList{ justify-content: flex-start !important; }
+
+.linksContainer{
+    list-style: none;
+    margin: 1rem;
+    text-align: center;
+}
+
+.linksContainer:hover{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(100, 100, 100, 0.36);
+}
+
+.links{
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
+
+.searchContainer{ margin-right: 3.5%; }
+
+.searchBtn{
+    padding: 16%;
+    border: 1px solid orange;
+}
+
+.searchBtn:hover{
+    background-color: orange;
+    color: white !important;
+}
+
+@media only screen and (max-width: 800px){
+    .navbar{
+        max-height: 38px;
+        flex-direction: column;
+        background-color:  rgba(183, 183, 183, 0.22) !important;
+        padding-bottom: 3%;
+        transition: 500ms max-height ease-out;
+    }
+
+    .toggle-height{
+        max-height: 1000px !important;
+    }
+
+    .logoBrandNameContainer{
+        width: 100%;
+        padding: 1.6% 0px;
+    }
+
+    .logoContainer{ margin: 0px 1% !important; }
+
+    .brandNameContainer{ margin: unset !important; }
+
+    .hamburger{ display: block !important; }
+
+    .linksListContainer{ margin-left: unset !important; }
+
+    .linksContainer{ padding: 2% !important; }
+    
+    .linksList{
+        width: var(--toggle-width);
+        border-top: 1px solid black;
+        flex-direction: column;
+        padding: 2%;
+    }
+
+    .searchContainer{
+        width: var(--toggle-width);
+        margin: unset !important;
+    }
+
+    .searchBarContainer, .searchBtnContainer{ margin-right: 2% !important; }
+}
+
+@media only screen and (max-width: 300px){
+    
+    .searchContainer{ flex-direction: column; }
+
+    .searchBarContainer{
+        width: var(--toggle-width);
+        margin: 0px 0px 2% 0px !important;
+    }
+
+    .searchBar{
+        width: 80%;
+        padding: 2% !important;
+    }
+    
+    .searchBtnContainer{ margin: 2% 0px 0px 0px !important; }
+
+    .searchBtn{ padding: 8% !important; }
+}

@@ -1,0 +1,344 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.m-auto{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.center-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.padx-1{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.pady-1{
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+.mx-1{
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.ml-auto{
+    margin-left: auto; 
+}
+
+.inline{
+    display: inline;
+}
+
+.red{
+    background-color: red;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.blue{
+    background-color: aqua;
+}
+
+.green{
+    background-color: green;
+}
+
+.b-radius{
+    border-radius: 5px;
+}
+
+.center{
+    text-align: center;
+}
+
+.list-none{
+    list-style: none;
+}
+
+.text-none{
+    text-decoration: none;
+}
+
+.color-white{
+    color: white;
+}
+
+.fontrem-1{
+    font-size: 1rem;
+}
+
+.border2px{
+    border: 2px solid black;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.height22{
+    height: 22px;
+}
+
+.outline-none{
+    outline: none;
+}
+
+
+.underline:hover{
+    text-decoration: underline;
+    text-underline-offset:5px;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.block{
+    display: block !important;
+}
+
+.my-1{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.flex{
+    display: flex;
+}
+
+.width80{
+    width: 80%;
+}
+
+.inline-flex{
+    display: inline-flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.table-cells{
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.border-collapse{
+    border-collapse: collapse;
+}
+
+.universalspan{
+    margin-right: auto;
+    margin-left: 10%;
+}
+
+.height36{
+    height: 36px;
+}
+
+.none{
+    display: none;
+}
+
+.padx-2{
+    padding-right:2%;
+    padding-left:2%;
+}
+
+.pady-2{
+    padding-top:2%;    
+    padding-bottom:2%;    
+}
+
+.fixed-nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+ 
+.mx-2{
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.over-hidden{
+    overflow: hidden;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.width-70{
+    width: 70%;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.width-100{
+    width: 100%;
+}
+
+.my-2{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.outline:hover{
+    outline: yellow !important;
+    outline-style: ridge !important;
+}
+
+.outline-red{
+    outline: red !important;
+    outline-style: ridge !important;
+}
+
+.attachment-fixed{
+    background-attachment: fixed;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.shadow-black-1px{
+    text-shadow: 1px 1px black;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.break-word{
+    word-break: break-word;
+}
+
+.overflow-scroll{
+    overflow: scroll;
+}
+
+.overflow-x-scroll{ 
+    overflow-x: scroll;
+}
+
+.overflow-y-scroll{ 
+    overflow-y: scroll;
+}
+
+.color-red{
+    color: red
+}
+
+.height-100vh{
+    height: 100vh;
+}
+
+.relative{
+    position: relative;
+}
+
+.top-50{
+    top: 50%;
+}
+
+.font-serif{
+    font-family: serif;
+}
+
+.width-25{
+    width: 25%;
+}
+
+.border1px{
+    border: 1px solid black;
+}
+
+.mr-3{
+    margin-right: 3%;
+}
+
+.ml-3{
+    margin-left: 3%;
+}
+
+.mr-2{
+    margin-right: 2%;
+}
+
+.ml-2{
+    margin-left: 2%;
+}
+
+.mt-2{
+    margin-top: 2%;
+}
+
+.mb-2{
+    margin-bottom: 2%;
+}
+
+.border-circle{
+    border-radius: 50%;
+}
+
+.width-max{
+    width: max-content;
+}
+
+.width-min{
+    width: min-content;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.height-auto{
+    height: auto !important;
+}
+ 
+.p-1{
+    padding: 1%;
+}
+
+.p-2{
+    padding: 2%;
+}
+
+.p-3{
+    padding: 3%;
+}
+
+.p-4{
+    padding: 4%;
+}
+
+.color-orange{
+    color: orange;
+}
+
+.fontrem-2{
+    font-size: 2rem;
+}
+
+.inline-block{
+    display: inline-block;
+}

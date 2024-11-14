@@ -1,0 +1,6 @@
+**/node_modules/
+PROJECTS/
+# .gitignore
+# .Web_Development/workshop/Backend/TypeScript/**/*.js
+**/*.env
+workshop/

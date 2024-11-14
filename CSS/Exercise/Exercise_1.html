@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<!-- i mean set its width to fit properly inside that div in css -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Master card</title>
+    <style>
+      :root {
+        --white: #fff;
+        --gold: rgb(255, 215, 0);
+        --bg-color: rgb(36 55 71);
+        --silver-chip: rgb(236 237 237);
+        --black: #000;
+        --chip-border: rgb(148 150 153);
+        --red: #e61b25;
+        --yellow: #f99f1b;
+        --dark-silver: #808080;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url("https://images.pexels.com/photos/460635/pexels-photo-460635.jpeg?auto=compress&cs=tinysrgb&dpr=1");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        padding: 5rem;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 56rem;
+        padding: 5rem;
+        box-shadow: 0px 0px 3px var(--gold), 0px 0px 3px var(--gold);
+        border: 0.1rem solid var(--gold);
+        border-radius: 3rem;
+        backdrop-filter: blur(1rem);
+        position: relative;
+        perspective: 100rem;
+        &:hover .master-card {
+          transform: rotateY(180deg);
+          & .front-side {
+            opacity: 0;
+            left: -200%;
+          }
+          & .back-side {
+            opacity: 1;
+            left: 50%;
+            transform: rotateY(180deg);
+          }
+        }
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 50%;
+          translate: -50% 0%;
+          width: 0.5rem;
+          height: 5rem;
+          background-color: var(--gold);
+        }
+        &::after {
+          top: auto;
+          bottom: 0;
+        }
+
+        .master-card {
+          z-index: 999;
+          font-family: "Poppins", sans-serif;
+          overflow: hidden;
+          text-transform: capitalize;
+          color: var(--white);
+          width: 100%;
+          transition: all 0.5s linear;
+          backdrop-filter: blur(1rem);
+          background-image: linear-gradient(
+            312deg,
+            var(--bg-color),
+            rgb(70 94 114),
+            #757575,
+            rgb(70 94 114),
+            var(--bg-color)
+          );
+          border: none;
+          border-radius: inherit;
+          padding: 2.5rem;
+          box-shadow: 2px 2px 0.5rem var(--black);
+          font-size: 1.6rem;
+          position: relative;
+          height: 30rem;
+          /* max-height: 28rem; */
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            right: 0;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            z-index: -2;
+            background: radial-gradient(
+              at bottom,
+              rgb(255 255 255 / 20%),
+              #293f51
+            );
+            box-shadow: inset 1px 1px 4rem #ffffff2e,
+              inset -1px -1px 4rem #ffffff2e;
+          }
+
+          & .design-hang {
+            position: absolute;
+            z-index: -2;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            &::before {
+              content: "";
+              position: absolute;
+              top: -5rem;
+              right: -4rem;
+              width: 80%;
+              aspect-ratio: 2 / 1;
+              z-index: -1;
+              border: 0.1rem solid;
+              border-radius: 50%;
+              border-top: none;
+              border-right: none;
+              rotate: 17deg;
+              transform: rotateY(180deg);
+            }
+          }
+
+          & .front-side,
+          & .back-side {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: 0.5s left, 0.5s transform, 0.25s opacity;
+            transition-timing-function: linear;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            width: calc(100% - 5rem);
+            height: 100%;
+          }
+          & .front-side {
+            opacity: 1;
+            & .header,
+            & .chip-box,
+            & .infobox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            & .header {
+              & h2 {
+                font-weight: 300;
+              }
+              & svg {
+                width: 2rem;
+                rotate: 90deg;
+              }
+            }
+            & h2 {
+              font-size: 2rem;
+            }
+            & .chip-box {
+              align-items: end;
+              & .chip {
+                border-radius: 1rem;
+                width: 13%;
+                background-color: var(--silver-chip);
+                aspect-ratio: 1;
+                & div {
+                  width: 100%;
+                  border-radius: inherit;
+                  display: grid;
+
+                  & span {
+                    border: 0.1rem solid var(--chip-border);
+                  }
+                  &:first-child,
+                  &:last-child {
+                    grid-template-columns: 1fr 2fr 1fr;
+                    height: 23%;
+                  }
+                  &:first-child {
+                    & span {
+                      border-top: none;
+                    }
+                    & span:first-child,
+                    & span:last-child {
+                      border-bottom: none;
+                    }
+
+                    & span:first-child {
+                      border-top-left-radius: 1rem;
+                      border-left: none;
+                    }
+                    & span:nth-child(2) {
+                      border: none;
+                    }
+                    & span:last-child {
+                      border-top-right-radius: 1rem;
+                      border-right: none;
+                    }
+                  }
+                  &:nth-child(2),
+                  &:nth-child(3) {
+                    grid-template-columns: 2fr 1.1fr 2fr;
+                    height: 27%;
+                    & hr {
+                      height: 1px;
+                      background-color: var(--chip-border);
+                      width: 100%;
+                      align-self: center;
+                      justify-self: center;
+                    }
+                  }
+                  &:nth-child(2) {
+                    & span {
+                      border-bottom: none;
+                    }
+                    & span:first-child {
+                      border-top-right-radius: 1rem;
+                    }
+                    & span:last-child {
+                      border-top-left-radius: 1rem;
+                    }
+                  }
+                  &:nth-child(3) {
+                    & span:first-child {
+                      border-bottom-right-radius: 1rem;
+                    }
+                    & span:last-child {
+                      border-bottom-left-radius: 1rem;
+                    }
+                  }
+
+                  &:last-child {
+                    & span:first-child,
+                    & span:last-child {
+                      border-top: none;
+                    }
+                    & span:first-child {
+                      border-bottom-left-radius: 1rem;
+                    }
+                    & span:nth-child(2) {
+                      border-top: none;
+                    }
+                    & span:last-child {
+                      border-bottom-right-radius: 1rem;
+                    }
+                  }
+                }
+              }
+              & h2 {
+                font-weight: 400;
+              }
+            }
+            & .infobox {
+              & .info {
+                & p:first-child {
+                  font-size: 1.8rem;
+                }
+                & p:nth-child(2) {
+                  font-size: 1rem;
+                }
+              }
+
+              & .brandbox {
+                align-self: end;
+                & span {
+                  display: inline-block;
+                  width: 5rem;
+                  aspect-ratio: 1;
+                  border-radius: 50%;
+                  position: relative;
+                  background-color: var(--red);
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    width: inherit;
+                    border-radius: inherit;
+                    aspect-ratio: inherit;
+                    background-color: var(--yellow);
+                    top: 0;
+                    left: 50%;
+                    mix-blend-mode: hard-light;
+                  }
+                }
+                & h2 {
+                  font-size: 1.2rem;
+                  font-weight: 300;
+                }
+              }
+            }
+          }
+          & .back-side {
+            opacity: 0;
+            left: 200%;
+            font-size: 1rem;
+            gap: 1rem;
+            & .phonebox {
+              & p {
+                text-align: center;
+                font-size: 1.2rem;
+                & > span {
+                  font-weight: 600;
+                  margin-right: 0.2rem;
+                }
+              }
+              & > span {
+                width: 100%;
+                display: block;
+                background: black;
+                height: 2rem;
+                position: relative;
+                &::before {
+                  content: "";
+                  position: absolute;
+                  width: calc(100% + 11rem);
+                  height: inherit;
+                  background: inherit;
+                  top: 0;
+                  left: -5rem;
+                }
+              }
+            }
+
+            & .card-stripbox {
+              & .card-validation {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                & > p:first-child {
+                  text-transform: uppercase;
+                  font-weight: 500;
+                  font-size: 1.1rem;
+                }
+                & > p:last-child {
+                  font-size: 0.9rem;
+                }
+              }
+              & span {
+                display: block;
+                width: 60%;
+                height: 3rem;
+                background-color: var(--white);
+                position: relative;
+                &::before {
+                  content: "";
+                  background: repeating-linear-gradient(
+                      #0000 0 0.5rem,
+                      #fff 0 1rem
+                    ),
+                    linear-gradient(to right, orange, lightblue, orange);
+
+                  background-clip: padding-box;
+                  width: 100%;
+                  height: inherit;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                }
+                &::after {
+                  content: "3412 3456";
+                  width: 100%;
+                  height: inherit;
+                  color: var(--black);
+                  position: absolute;
+                  top: 0;
+                  right: 1rem;
+                  display: flex;
+                  justify-content: end;
+                  align-items: center;
+                  font-weight: 700;
+                  font-size: 1.2rem;
+                }
+              }
+            }
+
+            & .card-details {
+              display: flex;
+              gap: 1rem;
+              justify-content: space-between;
+              align-items: center;
+              & > span {
+                width: 20rem;
+                border-radius: 1rem;
+                background-color: var(--dark-silver);
+                padding: 0.7rem 1.5rem;
+                & > img {
+                  width: 100%;
+                }
+              }
+              & .detail {
+                & > :not(p:last-child) {
+                  font-size: 1.1rem;
+                }
+                & > p:first-child {
+                  font-style: italic;
+                }
+                & > p:nth-child(2) {
+                  text-transform: uppercase;
+                  font-weight: 500;
+                }
+                & > p:last-child span {
+                  float: right;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @media (width <= 600px) {
+        html {
+          font-size: 56.25%;
+        }
+        body,
+        .container {
+          padding: 3rem;
+        }
+        .container {
+          & .master-card {
+            height: 35rem;
+          }
+        }
+      }
+
+      @media (width <= 365px) {
+        html {
+          font-size: 50%;
+        }
+        body,
+        .container {
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="master-card">
+        <div class="design-hang"></div>
+        <div class="front-side">
+          <div class="header">
+            <h2>world bank</h2>
+            <svg
+              style="color: white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 512"
+            >
+              <path
+                d="M54.2 202.9C123.2 136.7 216.8 96 320 96s196.8 40.7 265.8 106.9c12.8 12.2 33 11.8 45.2-.9s11.8-33-.9-45.2C549.7 79.5 440.4 32 320 32S90.3 79.5 9.8 156.7C-2.9 169-3.3 189.2 8.9 202s32.5 13.2 45.2 .9zM320 256c56.8 0 108.6 21.1 148.2 56c13.3 11.7 33.5 10.4 45.2-2.8s10.4-33.5-2.8-45.2C459.8 219.2 393 192 320 192s-139.8 27.2-190.5 72c-13.3 11.7-14.5 31.9-2.8 45.2s31.9 14.5 45.2 2.8c39.5-34.9 91.3-56 148.2-56zm64 160a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z"
+                fill="white"
+              ></path>
+            </svg>
+          </div>
+          <div class="chip-box">
+            <div class="chip">
+              <div>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div>
+                <span></span>
+                <hr />
+                <span></span>
+              </div>
+              <div>
+                <span></span>
+                <hr />
+                <span></span>
+              </div>
+              <div><span></span><span></span><span></span></div>
+            </div>
+            <h2>debit</h2>
+          </div>
+          <div class="infobox">
+            <div class="info">
+              <p>5412 7512 3412 3456</p>
+              <p>valid thru</p>
+              <p>03/28</p>
+              <p>pankaj kumar</p>
+            </div>
+            <div class="brandbox">
+              <span></span>
+              <h2>master card</h2>
+            </div>
+          </div>
+        </div>
+        <div class="back-side">
+          <div class="phonebox">
+            <p>
+              <span>phone banking numbers: </span>9899 6258 8102 / +91 20 8442
+              2881
+            </p>
+            <span></span>
+          </div>
+          <div class="card-stripbox">
+            <div class="card-validation">
+              <p>authorized signature-not valid unless signed</p>
+              <p>jfSW2086465729</p>
+            </div>
+            <span></span>
+          </div>
+          <div class="card-details">
+            <span>
+              <img
+                src="https://res.cloudinary.com/dblq992uw/image/upload/v1731592805/Web_Development/CSS/Exercise-1/pigeon-removebg-preview_ljq7km.png"
+                alt="pigeon"
+              />
+            </span>
+            <div class="detail">
+              <p>
+                not valid for payment in foreign exchange in pakistan and
+                afganistan.
+              </p>
+              <p>not transferable</p>
+              <p>
+                this card is the property of world bank. if found, please return
+                to world bank.; card division; new york, usa. the use of this
+                card is governed by the terms and conditions of usage of world
+                bank.
+                <span>visit us at www.worldbank.com</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
